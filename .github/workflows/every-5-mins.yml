@@ -1,7 +1,7 @@
 name: every 5 mins
 on:
   schedule:
-    - cron:  '0,5,10,15,20,25,30,35,40,45,50,55 * * * *'
+    - cron:  '0/5 * * * *'
 
 jobs:
   List-files:
@@ -13,4 +13,5 @@ jobs:
       - name: List files in the repository
         run: |
           ls -la ${{ github.workspace }}
+          echo run schedule "'${{ github.event.schedule }}'"
       - run: echo "🍏 This job's status is ${{ job.status }}."
