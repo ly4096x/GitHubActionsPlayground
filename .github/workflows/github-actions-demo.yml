@@ -1,8 +1,6 @@
 name: GitHub Actions Demo
 on:
   push:
-  schedule:
-    - cron:  '0/5 * * * *'
 
 jobs:
   List-files:
@@ -15,14 +13,3 @@ jobs:
         run: |
           ls -la ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-
-  login:
-    runs-on: ubuntu-latest
-    steps:
-      -
-        name: Login to GitHub Container Registry
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
