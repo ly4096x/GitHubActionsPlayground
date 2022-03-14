@@ -26,7 +26,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
-          password: ${{ inputs.github-token }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - id: check-if-base-image-updated
         if: ${{ github.event_name == 'schedule' }}
@@ -43,4 +43,3 @@ jobs:
         uses: ./.github/actions/build-and-push
         with:
             package-version: ${{ steps.get-time.outputs.build-time }}
-            github-token: ${{ secrets.GITHUB_TOKEN }}

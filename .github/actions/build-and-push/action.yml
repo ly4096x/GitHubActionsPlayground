@@ -2,8 +2,6 @@ name: build-and-push
 inputs:
   package-version:
     required: true
-  github-token:
-    required: true
 runs:
   using: 'composite'
   steps:
