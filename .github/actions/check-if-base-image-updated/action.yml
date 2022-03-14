@@ -12,5 +12,5 @@ runs:
     - id: result-step
       env:
         package_tag: ${{ inputs.package-tag }}
-      run: python3 ${{ github.action_path }}/run.py Dockerfile"
+      run: python3 ${{ github.action_path }}/run.py Dockerfile
       shell: bash
