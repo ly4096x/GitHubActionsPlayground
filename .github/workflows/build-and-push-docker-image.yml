@@ -39,3 +39,4 @@ jobs:
         uses: ./.github/actions/build-and-push
         with:
             package-version: ${{ steps.get-time.outputs.build-time }}
+            github-token: ${{ secrets.GITHUB_TOKEN }}

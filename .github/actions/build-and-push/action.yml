@@ -2,6 +2,8 @@ name: build-and-push
 inputs:
   package-version:
     required: true
+  github-token:
+    required: true
 runs:
   using: 'composite'
   steps:
@@ -10,7 +12,7 @@ runs:
       with:
         registry: ghcr.io
         username: ${{ github.repository_owner }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+        password: ${{ inputs.token }}
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
