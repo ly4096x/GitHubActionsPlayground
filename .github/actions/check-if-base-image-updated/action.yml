@@ -6,10 +6,10 @@ outputs:
   result:
     description: 'is-base-image-updated [true, false]'
     value: ${{ steps.result-step.outputs.result }}
+env:
+  package_link: ${{ inputs.package-link }}
 runs:
   using: 'composite'
-  env:
-    package_link: ${{ inputs.package-link }}
   steps:
     - shell: bash
       run: |
