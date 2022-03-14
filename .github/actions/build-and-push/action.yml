@@ -12,7 +12,7 @@ runs:
       with:
         registry: ghcr.io
         username: ${{ github.repository_owner }}
-        password: ${{ inputs.token }}
+        password: ${{ inputs.github-token }}
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
