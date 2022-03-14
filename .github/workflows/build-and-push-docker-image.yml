@@ -21,7 +21,7 @@ jobs:
         uses: ./.github/actions/check-if-base-image-updated
       -
         run: |
-          echo steps.check-if-base-image-updated.outputs.value = ${{ steps.check-if-base-image-updated.outputs.value }}
+          echo steps.check-if-base-image-updated.outputs.result = ${{ steps.check-if-base-image-updated.outputs.result }}
       -
         name: Login to GitHub Container Registry
         uses: docker/login-action@v1
