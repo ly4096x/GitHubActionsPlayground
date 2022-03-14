@@ -2,16 +2,10 @@ name: 'check-if-base-image-updated'
 outputs:
   result:
     description: 'is-base-image-updated [true, false]'
-    value: ${{ steps.random-number-generator.outputs.random-id }}
+    value: ${{ steps.result-step.outputs.result }}
 runs:
   using: 'composite'
   steps:
-#    -
-#      run: ls -la .
-#      shell: bash
-#    -
-#      run: pwd
-#      shell: bash
-    -
-      run: echo "::set-output name=random-id::true"
+    - id: result-step
+      run: echo "::set-output name=result::true"
       shell: bash
