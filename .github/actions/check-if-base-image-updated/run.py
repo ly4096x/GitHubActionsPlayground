@@ -2,7 +2,7 @@ import sys, os, subprocess
 
 def get_timestamp_str(image):
     subprocess.run(f'docker pull {image}'.split(' '), check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    r = subprocess.run(f"docker image inspect {image} --format '{{{{.Created}}}}'".split(' '), check=True, capture_output=True)
+    r = subprocess.run(f"docker image inspect {image}".split(' ') + ['--format', r'{{.Created}}'], check=True, capture_output=True)
     r = r.stdout.decode('utf-8').split('.')[0]
     r = ''.join(r.split(':'))
     r = ''.join(r.split('-'))
