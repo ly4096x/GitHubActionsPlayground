@@ -17,8 +17,9 @@ jobs:
     steps:
       - id: get-time
         run: |
-          echo "::set-output name=build-time::$(date -u +'%Y%m%d_%H%M%S')"
-          echo Timestamp: ${{ steps.get-time.outputs.build-time }}
+          tp=$(date -u +'%Y%m%d_%H%M%S')
+          echo "::set-output name=build-time::$tp"
+          echo Timestamp: $tp
 
       - name: Checkout Repo
         uses: actions/checkout@v2
