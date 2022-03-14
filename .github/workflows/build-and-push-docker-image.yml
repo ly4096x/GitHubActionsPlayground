@@ -6,9 +6,6 @@ on:
   schedule:
     - cron:  '3/5 * * * *'
 
-# check if base image updated
-# check if package updated [ apk update ; apk -u list ] not empty
-
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
@@ -23,6 +20,13 @@ jobs:
 
       - name: Checkout Repo
         uses: actions/checkout@v2
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ inputs.github-token }}
 
       - id: check-if-base-image-updated
         if: ${{ github.event_name == 'schedule' }}
