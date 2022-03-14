@@ -12,7 +12,7 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     env:
-      package_repo: ghcr.io/${{ github.repository_owner }}/${{ env.package_name }}
+      package_repo: ghcr.io/${{ github.repository_owner }}/$package_name
     steps:
       - id: get-time
         run: |
