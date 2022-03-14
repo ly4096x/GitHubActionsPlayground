@@ -2,7 +2,7 @@ name: 'check-if-base-image-updated'
 outputs:
   result:
     description: 'is-base-image-updated [true, false]'
-    value: ${{ steps.check-if-base-image-updated.outputs.result }}
+    value: ${{ result-id }}
 runs:
   using: 'composite'
   steps:
@@ -15,9 +15,3 @@ runs:
     -
       run: echo "::set-output name=result::true"
       shell: bash
-    -
-      run: echo "${{ github.action_path }}" >> $GITHUB_PATH
-      shell: bash
-branding:
-  icon: 'package'
-  color: 'blue'

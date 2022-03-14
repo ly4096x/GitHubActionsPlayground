@@ -17,6 +17,7 @@ jobs:
         name: Checkout Repo
         uses: actions/checkout@v2
       -
+        name: check-if-base-image-updated
         id: check-if-base-image-updated
         uses: ./.github/actions/check-if-base-image-updated
       -
