@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v2
       -
         name: check-if-base-image-updated
-        uses: .github/actions/check-if-base-image-updated
+        uses: ./.github/actions/check-if-base-image-updated
       -
         run: |
           echo steps.check-if-base-image-updated.outputs.value = ${{ steps.check-if-base-image-updated.outputs.value }}
