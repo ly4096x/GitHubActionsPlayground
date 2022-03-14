@@ -1,0 +1,22 @@
+name: 'check-if-base-image-updated'
+outputs:
+  value:
+    description: 'is-base-image-updated [true, false]'
+runs:
+  using: 'composite'
+  steps:
+    -
+      run: ls -la .
+      shell: bash
+    -
+      run: pwd
+      shell: bash
+    -
+      run: echo "::set-output name=value::true"
+      shell: bash
+    -
+      run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+      shell: bash
+branding:
+  icon: 'package'
+  color: 'blue'
