@@ -18,7 +18,11 @@ if __name__ == '__main__':
                 images += [line[1]]
 
     print('Checking image', os.environ['package_tag'])
-    ref_timestamp = get_timestamp_str(os.environ['package_tag'])
+    ref_timestamp = '00000000_000000'
+    try:
+        get_timestamp_str(os.environ['package_tag'])
+    except:
+        pass
     print('Latest package T=', ref_timestamp, sep='')
 
     ret = 0
