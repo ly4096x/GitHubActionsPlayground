@@ -1,11 +1,24 @@
 name: 'check-if-base-image-updated'
+inputs:
+  package-link:
+    required: true
 outputs:
   result:
     description: 'is-base-image-updated [true, false]'
     value: ${{ steps.result-step.outputs.result }}
 runs:
   using: 'composite'
+  env:
+    package_link: ${{ inputs.package-link }}
   steps:
+    - shell: bash
+      run: |
+        echo ${{ github.action_path }}
+
+    - shell: bash
+      run: |
+        docker pull ${{ inputs.package-link }}
+
     - id: result-step
-      run: echo "::set-output name=result::true"
+      run: python3 ${{ github.action_path }}/run.py Dockerfile"
       shell: bash
