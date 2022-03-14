@@ -17,16 +17,18 @@ if __name__ == '__main__':
                 line = [s for s in line.split() if s]
                 images += [line[1]]
 
-    print('checking image', os.environ['package_tag'])
+    print('Checking image', os.environ['package_tag'])
     ref_timestamp = get_timestamp_str(os.environ['package_tag'])
     print('Latest package T=', ref_timestamp, sep='')
 
     ret = 0
     for image in images:
-        print('checking image', image)
+        print('Checking image', image, '... ', end='')
         r = get_timestamp_str(image)
         if r > ref_timestamp:
-            print(image, ' has an update, T=', r, sep='')
+            print('has an update, T=', r, sep='')
             ret = 1
+        else:
+            print('no update, T=', r, sep='')
 
     print(f'::set-output name=result::{ret}')
