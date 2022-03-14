@@ -1,6 +1,6 @@
 name: 'check-if-base-image-updated'
 inputs:
-  package-link:
+  package-tag:
     required: true
 outputs:
   result:
@@ -11,6 +11,6 @@ runs:
   steps:
     - id: result-step
       env:
-        package_link: ${{ inputs.package-link }}
+        package_tag: ${{ inputs.package-tag }}
       run: python3 ${{ github.action_path }}/run.py Dockerfile"
       shell: bash

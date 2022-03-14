@@ -1,6 +1,7 @@
 import sys, os, subprocess
 
 def get_timestamp_str(image):
+    return 'sample'
     subprocess.run(f'docker pull {image}'.split(' '), check=True)
     r = subprocess.run(f'docker image inspect {image}'.split(' '), check=True)
     r = r.stdout.decode('utf-8').split('.')[0]
@@ -16,8 +17,11 @@ with open(sys.argv[1], 'r') as f:
             line = [s for s in line.split() if s]
             images += [line[1]]
 
-print('checking image', os.environ['package_link'])
-ref_timestamp = get_timestamp_str(os.environ['package_link'])
+print(images)
+print(os.environ)
+
+print('checking image', os.environ['package_tag'])
+ref_timestamp = get_timestamp_str(os.environ['package_tag'])
 print('Latest package T=', ref_timestamp, sep='')
 
 ret = 0

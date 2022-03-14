@@ -26,7 +26,7 @@ jobs:
         name: check-if-base-image-updated
         uses: ./.github/actions/check-if-base-image-updated
         with:
-          package-link: ${{ env.package_repo }}:latest
+          package-tag: ${{ env.package_repo }}:latest
 
       - run: |
           echo steps.check-if-base-image-updated.outputs.result = ${{ steps.check-if-base-image-updated.outputs.result }}
