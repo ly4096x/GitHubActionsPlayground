@@ -44,6 +44,7 @@ jobs:
 
       - run: |
           echo steps.check-if-base-image-updated.outputs.result = ${{ steps.check-if-base-image-updated.outputs.result }}
+          echo steps.check-if-os-upgradable.outputs.result = ${{ steps.check-if-os-upgradable.outputs.result }}
 
       - if: ${{ steps.check-if-base-image-updated.outcome == 'skipped' || steps.check-if-base-image-updated.outputs.result != '0' || steps.check-if-os-upgradable.outputs.result != '0' }}
         name: Do build and push
