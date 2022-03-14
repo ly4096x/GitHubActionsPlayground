@@ -16,11 +16,13 @@ with open(sys.argv[1], 'r') as f:
             line = [s for s in line.split() if s]
             images += [line[1]]
 
+print('checking image', os.environ['package_link'])
 ref_timestamp = get_timestamp_str(os.environ['package_link'])
 print('Latest package T=', ref_timestamp, sep='')
 
 ret = 0
 for image in images:
+    print('checking image', image)
     r = get_timestamp_str(image)
     if r > ref_timestamp:
         print(image, ' has an update, T=', r, sep='')

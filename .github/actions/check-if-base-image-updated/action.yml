@@ -9,16 +9,8 @@ outputs:
 runs:
   using: 'composite'
   steps:
-    - shell: bash
-      run: |
-        echo ${{ github.action_path }}
-
-    - shell: bash
+    - id: result-step
       env:
         package_link: ${{ inputs.package-link }}
-      run: |
-        docker pull ${{ inputs.package-link }}
-
-    - id: result-step
       run: python3 ${{ github.action_path }}/run.py Dockerfile"
       shell: bash
